@@ -1,1 +1,1 @@
-I hesitate to put this collection in a public repository since it would mean that people could could just copy and past solutions.  Cheat.  I put this here so others can witness my work.  If anyone has any issue with these being here, contact me and I'll remove the solutions.
+I hesitate to put this collection in a public repository since it would mean that people could just copy and paste solutions.  Cheat.  I put this here so others can witness my work.  If anyone has any issue with these being here, contact me and I'll remove the solutions.
