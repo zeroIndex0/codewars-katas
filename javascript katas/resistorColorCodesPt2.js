@@ -74,7 +74,7 @@ After thoughts:
     These two are kind of nit picky, but the for loop really is unnecessary.
 */
 
-// ======================== Submitted Code ============================= \\
+// ======================== Refactored Code ============================= \\
 function encodeResistorColors(ohmsString) {
     const colorValues = {
         0: "black",
@@ -88,28 +88,61 @@ function encodeResistorColors(ohmsString) {
         8: "gray",
         9: "white"
     }
-    ohmsString = ohmsString.slice(0, ohmsString.length - 5);
-    let letter = ohmsString.slice(ohmsString.length - 1);
+    ohmsString = ohmsString.replace(" ohms", '');
     let ohms = 0;
     let result = '';
-    if (letter === "k") {
+    if (ohmsString.endsWith('k')) {
         ohms = (ohmsString.slice(0, ohmsString.length - 1) * 1000).toString();
-    } else if (letter === "M") {
+    } else if (ohmsString.endsWith('M')) {
         ohms = (ohmsString.slice(0, ohmsString.length - 1) * 1000000).toString();
     } else {
-        ohms = ohmsString.toString();
+        ohms = ohmsString;
     }
-    for (let i = 0; i < ohms.length; i++) {
-        if (i <= 1) {
-            result += colorValues[ohms.charAt(i)] + ' ';
-        } else {
-            result += colorValues[ohms.length - 2];
-            break;
-        }
-    }
+    result += colorValues[ohms[0]] + ' ';
+    result += colorValues[ohms[1]] + ' ';
+    if (ohms.length > 2) result += colorValues[ohms.length - 2];
     if (ohms.length < 3) result += "black"
     return result += " gold";
 }
+
+
+
+// // ======================== Submitted Code ============================= \\
+// function encodeResistorColors(ohmsString) {
+//     const colorValues = {
+//         0: "black",
+//         1: "brown",
+//         2: "red",
+//         3: "orange",
+//         4: "yellow",
+//         5: "green",
+//         6: "blue",
+//         7: "violet",
+//         8: "gray",
+//         9: "white"
+//     }
+//     ohmsString = ohmsString.slice(0, ohmsString.length - 5);
+//     let letter = ohmsString.slice(ohmsString.length - 1);
+//     let ohms = 0;
+//     let result = '';
+//     if (letter === "k") {
+//         ohms = (ohmsString.slice(0, ohmsString.length - 1) * 1000).toString();
+//     } else if (letter === "M") {
+//         ohms = (ohmsString.slice(0, ohmsString.length - 1) * 1000000).toString();
+//     } else {
+//         ohms = ohmsString.toString();
+//     }
+//     for (let i = 0; i < ohms.length; i++) {
+//         if (i <= 1) {
+//             result += colorValues[ohms.charAt(i)] + ' ';
+//         } else {
+//             result += colorValues[ohms.length - 2];
+//             break;
+//         }
+//     }
+//     if (ohms.length < 3) result += "black"
+//     return result += " gold";
+// }
 
 console.log(encodeResistorColors("10 ohms"), "brown black black gold")
 console.log(encodeResistorColors("47 ohms"), "yellow violet black gold")
